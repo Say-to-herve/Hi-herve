@@ -78,7 +78,7 @@ function initializeTv() {
 
   staticContext.imageSmoothingEnabled = false;
 
-  video.volume = 1;
+  video.volume = 0;
 
   powerButton.addEventListener("click", handlePowerButtonClick);
   video.addEventListener("ended", handleVideoEnded);
@@ -146,18 +146,19 @@ function turnTvOn() {
     Le volume est momentanément à zéro pendant l'animation CRT.
     On évite ainsi que le son précède visuellement l'allumage.
   */
+  video.muted = true;
   video.volume = 0;
 
-  startStaticNoise();
+startStaticNoise();
 
-  const initialPlayback = playRandomVideo();
+const initialPlayback = playRandomVideo();
 
-  initialPlayback.catch((error) => {
-    console.warn(
-      "La lecture initiale de la vidéo a échoué :",
-      error
-    );
-  });
+initialPlayback.catch((error) => {
+  console.warn(
+    "La lecture initiale de la vidéo a échoué :",
+    error
+  );
+});
 
   powerTransitionTimeoutId = window.setTimeout(() => {
     if (!isTvOn || sessionId !== tvSessionId) {
@@ -173,7 +174,7 @@ function turnTvOn() {
       La balise vidéo est déjà en lecture grâce au clic utilisateur.
       On rétablit maintenant le son.
     */
-    video.volume = 1;
+    video.volume = 0;
   }, BOOT_DURATION);
 }
 
@@ -192,7 +193,6 @@ function turnTvOff() {
     On coupe immédiatement le son et on fige la dernière image.
     Cette image sert ensuite à l'animation d'extinction CRT.
   */
-  video.volume = 0;
   video.pause();
 
   tv.classList.remove(
@@ -227,7 +227,7 @@ function turnTvOff() {
     video.removeAttribute("src");
     video.load();
 
-    video.volume = 1;
+    video.volume = 0;
   }, SHUTDOWN_DURATION);
 }
 
