@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <title>CRT Television</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="scene">
+    <div class="tv is-off" id="tv">
+      <div class="tv-cabinet">
+
+        <section class="screen-bezel" aria-label="Écran de télévision">
+          <div class="crt-screen" id="crtScreen">
+
+            <div class="screen-content" id="screenContent">
+              <video
+                id="tvVideo"
+                class="tv-video"
+                playsinline
+                preload="metadata"
+              ></video>
+
+              <canvas
+                id="staticCanvas"
+                class="static-canvas"
+                aria-hidden="true"
+              ></canvas>
+            </div>
+
+            <div class="screen-black" aria-hidden="true"></div>
+
+            <div class="screen-grain" aria-hidden="true"></div>
+            <div class="screen-chromatic" aria-hidden="true"></div>
+            <div class="screen-scanlines" aria-hidden="true"></div>
+            <div class="screen-vignette" aria-hidden="true"></div>
+            <div class="screen-glare" aria-hidden="true"></div>
+
+            <div class="power-bloom" aria-hidden="true"></div>
+          </div>
+        </section>
+
+        <aside class="control-panel">
+          <div class="brand">
+            <span class="brand-name">ORBITRON</span>
+            <span class="brand-model">COLOR 400</span>
+          </div>
+
+          <div class="speaker" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="dial-group" aria-hidden="true">
+            <div class="dial">
+              <div class="dial-marker"></div>
+            </div>
+
+            <div class="dial small">
+              <div class="dial-marker"></div>
+            </div>
+          </div>
+
+          <div class="power-section">
+            <div
+              class="power-led"
+              id="powerLed"
+              aria-hidden="true"
+            ></div>
+
+            <button
+              class="power-button"
+              id="powerButton"
+              type="button"
+              aria-label="Allumer la télévision"
+              aria-pressed="false"
+            >
+              <span class="power-symbol" aria-hidden="true"></span>
+            </button>
+
+            <span class="power-label">POWER</span>
+          </div>
+        </aside>
+
+      </div>
+
+      <div class="cabinet-shadow" aria-hidden="true"></div>
+    </div>
+  </main>
+
+  <script src="script.js"></script> 
+</body>
+</html>
